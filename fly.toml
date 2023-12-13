@@ -1,0 +1,29 @@
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+[build]
+  dockerfile = "./docker/Dockerfile"
+
+[deploy]
+  strategy = "rolling"
+
+[[vm]]
+size = "shared-cpu-1x"
+
+[mounts]
+  source="vaultwarden"
+  destination="/data"
+
+[http_service]
+  internal_port = 80
+  force_https = true
+
+[[http_service.checks]]
+  grace_period = "5s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/alive"
+
+[metrics]
+  port = 9090
+  path = "/metrics"
