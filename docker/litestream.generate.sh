@@ -14,7 +14,7 @@
 
 cat > /etc/litestream.yml <<EOF
 exec: /start.sh
-addr: ":9091"
+addr: ":9090"
 access-key-id:      ${S3_ACCESS_KEY_ID}
 secret-access-key:  ${S3_SECRET_ACCESS_KEY}
 dbs:
