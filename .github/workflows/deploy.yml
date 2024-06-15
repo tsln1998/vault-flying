@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
+        with:
+          version: 0.2.69
       - name: prepare secrets
         env:
           SECRETS: "${{ toJSON(secrets) }}"
@@ -24,4 +26,4 @@ jobs:
       - name: exports secrets
         run: env | grep ^APP_ | sed 's/^APP_//g' | flyctl secrets import --stage
       - name: deploy app
-        run: flyctl deploy -y --remote-only -r $FLY_REGION
+        run: flyctl deploy --yes --remote-only --regions $FLY_REGION
