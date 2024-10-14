@@ -24,4 +24,5 @@ dbs:
     bucket:         ${S3_BUCKET}
     path:           ${S3_PATH}
     endpoint:       ${S3_ENDPOINT}
+    retention:      720h
 EOF
