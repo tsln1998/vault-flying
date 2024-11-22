@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
         with:
-          version: 0.2.69
+          version: 0.3.40
       - name: prepare secrets
         env:
           SECRETS: "${{ toJSON(secrets) }}"
